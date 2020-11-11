@@ -9,6 +9,8 @@ import {PostData} from "../../../Redux/State";
 export type PropsType = {
     posts: Array<PostData>
     addPostCallback: (addPost:string)=>void
+    messageForNewPost: string
+    changeNewText: (newText:string)=>void
 }
 
 function MyPosts (props: PropsType)  {
@@ -17,22 +19,20 @@ function MyPosts (props: PropsType)  {
     const postsElements = props.posts.map (p => <Post message={p.message} likeCounts={p.likeCounts}/>)
 
     const addPost = ()=> {
+        props.addPostCallback(props.messageForNewPost)
+        props.changeNewText("")
 
-        if(newPostElement.current){
 
-        props.addPostCallback(newPostElement.current.value)
-        newPostElement.current.value = ''
-        }
     }
 
-    let newPostElement = React.createRef<HTMLTextAreaElement>()
+
 
     return (
         <div className={s.PostsBlock}>
             <h3>My posts</h3>
             <div>
                 <div>
-                    <textarea ref={newPostElement}></textarea>
+                    <textarea value={props.messageForNewPost} onChange={(e)=>props.changeNewText(e.currentTarget.value)}></textarea>
                 </div>
                 <div>
                     <button onClick={addPost}>Add post</button>

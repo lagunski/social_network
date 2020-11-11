@@ -5,14 +5,14 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import {BrowserRouter} from "react-router-dom";
-import {addPost, RootStateType} from "./Redux/State";
+import {addPost, changeNewText, RootStateType} from "./Redux/State";
 
 
 export const rerenderEntireTree = (state:RootStateType) => {
 
     ReactDOM.render(
         <BrowserRouter>
-            <App state={state} addPostCallback={addPost}/>
+            <App state={state} addPostCallback={addPost} changeNewText={changeNewText}/>
         </BrowserRouter>,
         document.getElementById('root')
     );

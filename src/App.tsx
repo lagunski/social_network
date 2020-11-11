@@ -12,6 +12,7 @@ export type PropsType = {
 
     state: RootStateType
     addPostCallback: (addPost:string) => void
+    changeNewText: (newText:string)=>void
 }
 
 function App(props: PropsType) {
@@ -25,6 +26,7 @@ function App(props: PropsType) {
 
                 <Route path='/dialogs' render={() => <Dialogs state={props.state.dialogsPage} />}/>
                 <Route path='/profile' render={() => <Profile state={props.state.profilePage}
+                                                              changeNewText={props.changeNewText}
                                                               addPostCallback={props.addPostCallback}/>}/>
 
             </div>
