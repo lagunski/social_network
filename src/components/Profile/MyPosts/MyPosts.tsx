@@ -32,7 +32,7 @@ function MyPosts (props: PropsType)  {
             <h3>My posts</h3>
             <div>
                 <div>
-                    <textarea value={props.messageForNewPost} onChange={(e)=>props.changeNewText(e.currentTarget.value)}></textarea>
+                    <textarea value={props.messageForNewPost} onChange={(e)=>props.changeNewText(e.currentTarget.value)}/>
                 </div>
                 <div>
                     <button onClick={addPost}>Add post</button>
