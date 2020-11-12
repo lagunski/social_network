@@ -1,4 +1,6 @@
-import {rerenderEntireTree} from "../rende";
+let onChange = () => {
+    console.log("Hello")
+}
 
 export type DialogItemType = {
     id: number
@@ -22,22 +24,22 @@ export type dialogsPageType = {
     dialogs: Array<DialogItemType>
 }
 
-export type profilePageType ={
+export type profilePageType = {
     posts: Array<PostData>
     messageForNewPost: string
 
 }
 
-export type RootStateType ={
+export type RootStateType = {
 
-dialogsPage: dialogsPageType
-profilePage: profilePageType
+    dialogsPage: dialogsPageType
+    profilePage: profilePageType
 
 
 }
 
 let state: RootStateType = {
-    profilePage:{
+    profilePage: {
 
         posts: [
             {id: 1, message: 'Hi, how are you?', likeCounts: 15},
@@ -45,7 +47,7 @@ let state: RootStateType = {
         ],
         messageForNewPost: ""
     },
-    dialogsPage:{
+    dialogsPage: {
         messages: [
             {id: 1, message: 'Hi'},
             {id: 2, message: 'How is your It-kamasutra?'},
@@ -64,9 +66,9 @@ let state: RootStateType = {
     }
 }
 
-export const addPost = (postMessage:string) => {
+export const addPost = (postMessage: string) => {
 
-    const newPost: PostData ={
+    const newPost: PostData = {
         id: 5,
         message: postMessage,
         likeCounts: 0
@@ -74,13 +76,16 @@ export const addPost = (postMessage:string) => {
 
 
     state.profilePage.posts.push(newPost)
-    rerenderEntireTree(state);
+    onChange();
 }
 
-export const changeNewText=(newText: string)=>{
-    state.profilePage.messageForNewPost=newText;
-    rerenderEntireTree(state)
+export const changeNewText = (newText: string) => {
+    state.profilePage.messageForNewPost = newText;
+    onChange()
 }
 
+export const subscribe = (observer: () => void) => {
+onChange=observer
+}
 
 export default state;
