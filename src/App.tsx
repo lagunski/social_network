@@ -5,14 +5,13 @@ import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 import {Route} from "react-router-dom";
-import {RootStateType} from "./Redux/State";
+import {ActionsTypes, RootStateType} from "./Redux/State";
 
 
 export type PropsType = {
 
     state: RootStateType
-    addPostCallback: (addPost:string) => void
-    changeNewText: (newText:string)=>void
+    dispatch: (action: ActionsTypes) => void
 }
 
 function App(props: PropsType) {
@@ -26,8 +25,7 @@ function App(props: PropsType) {
 
                 <Route path='/dialogs' render={() => <Dialogs state={props.state.dialogsPage} />}/>
                 <Route path='/profile' render={() => <Profile state={props.state.profilePage}
-                                                              changeNewText={props.changeNewText}
-                                                              addPostCallback={props.addPostCallback}/>}/>
+                                                              dispatch={props.dispatch} />}/>
 
             </div>
         </div>
