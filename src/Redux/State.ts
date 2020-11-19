@@ -18,6 +18,7 @@ export type PostData = {
 export type dialogsPageType = {
     messages: Array<MessageType>
     dialogs: Array<DialogItemType>
+    newMessageBody: string
 }
 
 export type profilePageType = {
@@ -34,24 +35,50 @@ export type RootStateType = {
 
 }
 
+const ADD_POST = "ADD_POST"
+const CHANGE_NEW_TEXT = "CHANGE_NEW_TEXT"
+const CHANGE_NEW_MESSAGE = "CHANGE_NEW_MESSAGE"
+
 export type StoreType = {
     _state: RootStateType,
     _onChange: () => void,
     subscribe: (observer: () => void) => void,
     getState: () => RootStateType
-    dispatch: (action: AddPostActionType | ChangeNewTextActionType) => void
+    dispatch: (action: ActionsTypes) => void
 }
 
-type AddPostActionType = {
-    type: "ADD-POST"
-    postMessage: string
+
+export type ActionsTypes = ReturnType <typeof addPostActionCreator> |
+    ReturnType <typeof changeNewPostActionCreator> |
+    ReturnType<typeof addNewMessageActionCreator> |
+    ReturnType<typeof sendMessageActionCreator>;
+
+export const addPostActionCreator = (postMessage: string) => {
+    return {
+        type: "ADD-POST",
+        postMessage: postMessage
+    } as const
 }
 
-type ChangeNewTextActionType = {
-    type: "CHANGE-NEW-TEXT"
-    newText: string
+export const addNewMessageActionCreator = (body: string) => {
+    return {
+        type: "CHANGE_NEW_MESSAGE_BODY",
+        body: body
+    } as const
 }
-export type ActionsTypes = AddPostActionType | ChangeNewTextActionType;
+export const changeNewPostActionCreator = (newText: string) => {
+    return {
+        type: "CHANGE_NEW_TEXT",
+        newText: newText
+    } as const
+}
+
+export const sendMessageActionCreator = () => {
+    return {
+        type: "SEND_MESSAGE",
+
+    } as const
+}
 
 let store: StoreType = {
     _state: {
@@ -79,6 +106,7 @@ let store: StoreType = {
                 {id: 6, name: 'Ivan'},
 
             ],
+            newMessageBody: "eqweq"
         }
     },
     _onChange() {
@@ -92,17 +120,24 @@ let store: StoreType = {
                 likeCounts: 0
             }
 
-
             this._state.profilePage.posts.push(newPost)
             this._onChange();
-        } else if (action.type === "CHANGE-NEW-TEXT") {
+        } else if (action.type === "CHANGE_NEW_TEXT") {
             this._state.profilePage.messageForNewPost = action.newText
+            this._onChange()
+        } else if (action.type === "CHANGE_NEW_MESSAGE_BODY") {
+            this._state.dialogsPage.newMessageBody = action.body
+            this._onChange()
+        } else if (action.type === "SEND_MESSAGE") {
+            let body = this._state.dialogsPage.newMessageBody
+            this._state.dialogsPage.newMessageBody = ""
+            this._state.dialogsPage.messages.push({id: 6, message: body})
             this._onChange()
         }
     },
 
 
-    subscribe(observer) {
+    subscribe(observer) { //pattern
         this._onChange = observer
     },
     getState() {
