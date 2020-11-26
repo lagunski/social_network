@@ -1,4 +1,4 @@
-import {ActionsTypes, PostData, RootStateType} from "./State";
+import {ActionsTypes, PostData, RootStateType} from "./Store";
 
 export const addPostActionCreator = (postMessage: string) => {
     return {
@@ -17,7 +17,17 @@ export const changeNewPostActionCreator = (newText: string) => {
 const ADD_POST = "ADD_POST"
 const CHANGE_NEW_TEXT = "CHANGE_NEW_TEXT"
 
-const profileReducer = (state:any, action: ActionsTypes) => {
+const initialState = {
+    posts: [
+        {id: 1, message: 'Hi, how are you?', likeCounts: 15},
+        {id: 2, message: 'It is my first post', likeCounts: 20}
+    ],
+    messageForNewPost: ""
+}
+
+type InitialState= typeof initialState
+
+const profileReducer = (state:InitialState=initialState, action: ActionsTypes):InitialState => {
 
     switch (action.type) {
         case ADD_POST:

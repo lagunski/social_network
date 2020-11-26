@@ -3,15 +3,18 @@ import s from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem';
 import Message from "./Message/Message";
 import {
+    dialogsPageType,
+    profilePageType,
 
     StoreType
-} from "../../Redux/State";
+} from "../../Redux/Store";
 import {addNewMessageActionCreator, sendMessageActionCreator} from "../../Redux/dialogs-reducer";
+import {CombinedState, Store} from "redux";
 
 
 type PropsType = {
 
-    store: StoreType;
+    store: Store<CombinedState<{ profilePage: profilePageType; dialogsPage: dialogsPageType; }>>;
 
 }
 

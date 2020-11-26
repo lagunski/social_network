@@ -5,14 +5,17 @@ import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 import {Route} from "react-router-dom";
-import store, {ActionsTypes, RootStateType, StoreType} from "./Redux/State";
+import store, {ActionsTypes, dialogsPageType, profilePageType, RootStateType, StoreType} from "./Redux/Store";
+import {CombinedState, Store} from "redux";
 
 
 export type PropsType = {
 
     state: RootStateType
     dispatch: (action: ActionsTypes) => void
-    store: StoreType
+
+
+    store: Store<CombinedState<{ profilePage: profilePageType; dialogsPage: dialogsPageType; }>>
 }
 
 function App(props: PropsType) {
