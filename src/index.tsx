@@ -5,7 +5,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import {BrowserRouter} from "react-router-dom";
-//import store from "./Redux/Store";
 import store from "./Redux/redux-store";
 
 
@@ -15,7 +14,7 @@ export const rerenderEntireTree = () => {
 
     ReactDOM.render(
         <BrowserRouter>
-            <App state={store.getState()} dispatch={store.dispatch.bind(store)} store={store} />
+            <App store={store} />
         </BrowserRouter>,
         document.getElementById('root')
     );

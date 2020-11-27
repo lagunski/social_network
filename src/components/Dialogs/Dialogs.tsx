@@ -4,17 +4,18 @@ import DialogItem from './DialogItem/DialogItem';
 import Message from "./Message/Message";
 import {
     dialogsPageType,
-    profilePageType,
 
-    StoreType
+
+
 } from "../../Redux/Store";
-import {addNewMessageActionCreator, sendMessageActionCreator} from "../../Redux/dialogs-reducer";
-import {CombinedState, Store} from "redux";
+
 
 
 type PropsType = {
+    addNewMessage: (body: string) => void
+    sendMessage: () => void
+    dialogsPage: dialogsPageType
 
-    store: Store<CombinedState<{ profilePage: profilePageType; dialogsPage: dialogsPageType; }>>;
 
 }
 
@@ -22,7 +23,7 @@ type PropsType = {
 function Dialogs(props: PropsType) {
 
 
-    let state= props.store.getState().dialogsPage
+    let state = props.dialogsPage
 
     let dialogsElements = state.dialogs.map((d) => <DialogItem name={d.name} id={d.id}/>);
 
@@ -30,12 +31,14 @@ function Dialogs(props: PropsType) {
     let newMessageBody = state.newMessageBody;
 
     let onSendMessageClick = () => {
-        props.store.dispatch(sendMessageActionCreator())
+        props.sendMessage()
     }
 
-    let onNewMessageChange = (e:ChangeEvent<HTMLTextAreaElement>) => {
+    let onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
 
-        props.store.dispatch(addNewMessageActionCreator(e.currentTarget.value))
+        let body = e.currentTarget.value
+        props.addNewMessage(body)
+
     }
 
     return (
@@ -49,8 +52,11 @@ function Dialogs(props: PropsType) {
 
                 <div>{messagesElements}</div>
                 <div>
-                    <div> <textarea value={newMessageBody} onChange={onNewMessageChange} placeholder="Enter your message"></textarea></div>
-                    <div> <button onClick={ onSendMessageClick }>send</button></div>
+                    <div><textarea value={newMessageBody} onChange={onNewMessageChange}
+                                   placeholder="Enter your message"></textarea></div>
+                    <div>
+                        <button onClick={onSendMessageClick}>send</button>
+                    </div>
                 </div>
 
 

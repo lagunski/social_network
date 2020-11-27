@@ -2,11 +2,13 @@ import React from "react";
 import s from './Profile.module.css';
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {ActionsTypes, profilePageType} from "../../Redux/Store";
+import {ActionsTypes, dialogsPageType, profilePageType} from "../../Redux/Store";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import {CombinedState, Store} from "redux";
 
 export type PropsType = {
-    state: profilePageType
-    dispatch: (action: ActionsTypes) => void
+
+    store: Store<CombinedState<{ profilePage: profilePageType; dialogsPage: dialogsPageType; }>>
 
 }
 
@@ -16,9 +18,7 @@ function Profile(props:PropsType) {
     return (
         <div className={s.content}>
             <ProfileInfo/>
-            <MyPosts posts={props.state.posts}
-                     messageForNewPost={props.state.messageForNewPost}
-                     dispatch={props.dispatch}/>
+            <MyPostsContainer store={props.store}/>
 
         </div>
     )

@@ -1,4 +1,4 @@
-import {ActionsTypes, PostData, RootStateType} from "./Store";
+import {ActionsTypes, PostData} from "./Store";
 
 export const addPostActionCreator = (postMessage: string) => {
     return {
