@@ -94,8 +94,6 @@ let store: StoreType = {
         this._onChange()
 
     },
-
-
     subscribe(observer) { //pattern
         this._onChange = observer
     },

@@ -12,7 +12,6 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 export type PropsType = {
 
-    store: Store<CombinedState<{ profilePage: profilePageType; dialogsPage: dialogsPageType; }>>
 }
 
 function App(props: PropsType) {
@@ -24,10 +23,8 @@ function App(props: PropsType) {
             <Navbar/>
             <div className={'app-wrapper-content'}>
 
-                <Route path='/dialogs' render={() => <DialogsContainer
-                    store={props.store}
-                    />}/>
-                <Route path='/profile' render={() => <Profile store={props.store} />}/>
+                <Route path='/dialogs' render={() => <DialogsContainer />}/>
+                <Route path='/profile' render={() => <Profile />}/>
 
             </div>
         </div>

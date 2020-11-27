@@ -8,7 +8,7 @@ import {CombinedState, Store} from "redux";
 
 export type PropsType = {
 
-    store: Store<CombinedState<{ profilePage: profilePageType; dialogsPage: dialogsPageType; }>>
+
 
 }
 
@@ -18,7 +18,7 @@ function Profile(props:PropsType) {
     return (
         <div className={s.content}>
             <ProfileInfo/>
-            <MyPostsContainer store={props.store}/>
+            <MyPostsContainer />
 
         </div>
     )

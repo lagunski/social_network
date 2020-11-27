@@ -4,13 +4,15 @@ import {dialogsPageType, profilePageType} from "../../../Redux/Store";
 import {addPostActionCreator, changeNewPostActionCreator} from "../../../Redux/profile-reducer";
 import MyPosts from "./MyPosts";
 import {CombinedState, Store} from "redux";
+import StoreContext from "../../../StoreContext";
+import store from "../../../Redux/redux-store";
 
 
 
 
 export type PropsType = {
 
-    store: Store<CombinedState<{ profilePage: profilePageType; dialogsPage: dialogsPageType; }>>
+
 
 }
 
@@ -19,23 +21,32 @@ export type PropsType = {
 
 function MyPostsContainer (props: PropsType)  {
 
-    let state = props.store.getState()
+    //let state = props.store.getState()
 
 
-    const addPost = ()=> {
-        props.store.dispatch(addPostActionCreator(state.profilePage.messageForNewPost))
-        props.store.dispatch(changeNewPostActionCreator(""))
+
+
+    return(
+    <StoreContext.Consumer>
+        {
+        (store)=> {
+            let state = store.getState()
+            const addPost = ()=> {
+                store.dispatch(addPostActionCreator(state.profilePage.messageForNewPost))
+                store.dispatch(changeNewPostActionCreator(""))
+            }
+            const OnPostChange = (newText:string) => {
+                store.dispatch(changeNewPostActionCreator(newText))
+
+            }
+
+            return <MyPosts changeNewPost={OnPostChange}
+                 addPost={addPost}
+                 posts={state.profilePage.posts}
+                 messageForNewPost={state.profilePage.messageForNewPost}/>}
     }
-
-    const OnPostChange = (newText:string) => {
-        props.store.dispatch(changeNewPostActionCreator(newText))
-
-    }
-
-    return <MyPosts changeNewPost={OnPostChange}
-                    addPost={addPost}
-                    posts={state.profilePage.posts}
-                    messageForNewPost={state.profilePage.messageForNewPost}/>
+    </StoreContext.Consumer>
+    )
 
 }
 
