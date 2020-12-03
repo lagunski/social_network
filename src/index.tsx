@@ -9,7 +9,7 @@ import store from "./Redux/redux-store";
 import {Provider} from 'react-redux';
 
 
-/*export const rerenderEntireTree = () => {*/
+
 
 ReactDOM.render(
     <BrowserRouter>
@@ -19,13 +19,6 @@ ReactDOM.render(
     </BrowserRouter>,
     document.getElementById('root')
 );
-/*
-}
-*/
-
-/*
-rerenderEntireTree();
-store.subscribe(rerenderEntireTree)*/
 
 
 // If you want your app to work offline and load faster, you can change
