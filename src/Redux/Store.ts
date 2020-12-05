@@ -1,5 +1,6 @@
 import profileReducer, {addPostActionCreator, changeNewPostActionCreator} from "./profile-reducer";
 import dialogsReducer, {addNewMessageActionCreator, sendMessageActionCreator} from "./dialogs-reducer";
+import {followAC, setUsersAC, unfollowAC} from "./users-reducer";
 
 export type DialogItemType = {
     id: number
@@ -50,7 +51,10 @@ export type StoreType = {
 export type ActionsTypes = ReturnType <typeof addPostActionCreator> |
     ReturnType <typeof changeNewPostActionCreator> |
     ReturnType<typeof addNewMessageActionCreator> |
-    ReturnType<typeof sendMessageActionCreator>;
+    ReturnType<typeof sendMessageActionCreator> |
+    ReturnType<typeof followAC> |
+    ReturnType<typeof unfollowAC> |
+    ReturnType<typeof setUsersAC>
 
 
 
