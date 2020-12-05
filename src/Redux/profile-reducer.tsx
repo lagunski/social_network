@@ -1,4 +1,5 @@
 import {ActionsTypes, PostData} from "./Store";
+import { v1 } from "uuid";
 
 export const addPostActionCreator = (postMessage: string) => {
     return {
@@ -19,8 +20,8 @@ const CHANGE_NEW_TEXT = "CHANGE_NEW_TEXT"
 
 const initialState = {
     posts: [
-        {id: 1, message: 'Hi, how are you?', likeCounts: 15},
-        {id: 2, message: 'It is my first post', likeCounts: 20}
+        {id: v1(), message: 'Hi, how are you?', likeCounts: 15},
+        {id: v1(), message: 'It is my first post', likeCounts: 20}
     ],
     messageForNewPost: ""
 }
@@ -33,7 +34,7 @@ const profileReducer = (state: InitialState = initialState, action: ActionsTypes
     switch (action.type) {
         case ADD_POST:
             const newPost: PostData = {
-                id: 5,
+                id: v1(),
                 message: action.postMessage,
                 likeCounts: 0
             }

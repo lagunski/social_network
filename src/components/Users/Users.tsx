@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from './users.module.css';
 import {UsersType} from "../../Redux/users-reducer";
+import { v1 } from 'uuid';
 
 type UsersPropsType = {
     users: Array<UsersType>,
-    follow: (userId:number)=>void
-    unfollow: (userId:number)=>void
+    follow: (userId:string)=>void
+    unfollow: (userId:string)=>void
     setUsers: (users:Array<UsersType>)=>void
 
 }
@@ -17,7 +18,7 @@ if (props.users.length===0) {
     {
         props.setUsers([
             {
-                id: 1,
+                id: v1(),
                 photoUrl: 'https://pbs.twimg.com/media/D0V2-vFX4AAEQiN?format=jpg&name=medium',
                 followed: false,
                 fullName: 'Roman',
@@ -25,7 +26,7 @@ if (props.users.length===0) {
                 location: {city: 'Minsk', country: 'Belarus'}
             },
             {
-                id: 2,
+                id: v1(),
                 photoUrl: 'https://pbs.twimg.com/media/D0V2-vFX4AAEQiN?format=jpg&name=medium',
                 followed: true,
                 fullName: 'Artur',
@@ -33,7 +34,7 @@ if (props.users.length===0) {
                 location: {city: 'Kiev', country: 'Ukraine'}
             },
             {
-                id: 3,
+                id: v1(),
                 photoUrl: 'https://pbs.twimg.com/media/D0V2-vFX4AAEQiN?format=jpg&name=medium',
                 followed: false,
                 fullName: 'Vlad',

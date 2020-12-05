@@ -1,19 +1,21 @@
 import profileReducer, {addPostActionCreator, changeNewPostActionCreator} from "./profile-reducer";
 import dialogsReducer, {addNewMessageActionCreator, sendMessageActionCreator} from "./dialogs-reducer";
 import {followAC, setUsersAC, unfollowAC} from "./users-reducer";
+import { v1 } from "uuid";
+
 
 export type DialogItemType = {
-    id: number
+    id: string
     name: string
 }
 export type MessageType = {
     message: string
-    id: number
+    id: string
 }
 
 
 export type PostData = {
-    id: number
+    id: string
     message: string
     likeCounts: number
 }
@@ -65,25 +67,25 @@ let store: StoreType = {
         profilePage: {
 
             posts: [
-                {id: 1, message: 'Hi, how are you?', likeCounts: 15},
-                {id: 2, message: 'It is my first post', likeCounts: 20}
+                {id: v1(), message: 'Hi, how are you?', likeCounts: 15},
+                {id: v1(), message: 'It is my first post', likeCounts: 20}
             ],
             messageForNewPost: ""
         },
         dialogsPage: {
             messages: [
-                {id: 1, message: 'Hi'},
-                {id: 2, message: 'How is your It-kamasutra?'},
-                {id: 3, message: 'Wow'},
+                {id: v1(), message: 'Hi'},
+                {id: v1(), message: 'How is your It-kamasutra?'},
+                {id: v1(), message: 'Wow'},
 
             ],
             dialogs: [
-                {id: 1, name: 'Roman'},
-                {id: 2, name: 'Artur'},
-                {id: 3, name: 'Vlad'},
-                {id: 4, name: 'Max'},
-                {id: 5, name: 'Alex'},
-                {id: 6, name: 'Ivan'},
+                {id: v1(), name: 'Roman'},
+                {id: v1(), name: 'Artur'},
+                {id: v1(), name: 'Vlad'},
+                {id: v1(), name: 'Max'},
+                {id: v1(), name: 'Alex'},
+                {id: v1(), name: 'Ivan'},
 
             ],
             newMessageBody: ""

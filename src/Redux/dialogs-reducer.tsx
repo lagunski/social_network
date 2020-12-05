@@ -1,4 +1,5 @@
 import {ActionsTypes} from "./Store";
+import { v1 } from "uuid";
 
 export const addNewMessageActionCreator = (body: string) => {
     return {
@@ -20,18 +21,18 @@ const SEND_MESSAGE = "SEND_MESSAGE"
 
 const initialState = {
     messages: [
-        {id: 1, message: 'Hi'},
-        {id: 2, message: 'How is your It-kamasutra?'},
-        {id: 3, message: 'Wow'},
+        {id: v1(), message: 'Hi'},
+        {id: v1(), message: 'How is your It-kamasutra?'},
+        {id: v1(), message: 'Wow'},
 
     ],
     dialogs: [
-        {id: 1, name: 'Roman'},
-        {id: 2, name: 'Artur'},
-        {id: 3, name: 'Vlad'},
-        {id: 4, name: 'Max'},
-        {id: 5, name: 'Alex'},
-        {id: 6, name: 'Ivan'},
+        {id: v1(), name: 'Roman'},
+        {id: v1(), name: 'Artur'},
+        {id: v1(), name: 'Vlad'},
+        {id: v1(), name: 'Max'},
+        {id: v1(), name: 'Alex'},
+        {id: v1(), name: 'Ivan'},
 
     ],
     newMessageBody: ""
@@ -58,7 +59,7 @@ const dialogsReducer = (state: InitialState = initialState, action: ActionsTypes
                 newMessageBody: "",
                 messages: [
                     ...state.messages,
-                    {id: 6, message: body}]
+                    {id: v1(), message: body}]
             }
 
         default:

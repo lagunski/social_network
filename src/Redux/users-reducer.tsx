@@ -10,7 +10,7 @@ export type LocationType= {
 }
 
 export type UsersType = {
-    id: number
+    id: string
     photoUrl:string
     followed: boolean
     fullName: string
@@ -28,12 +28,12 @@ const initialState = {
 
 export type FollowActionType = {
     type: 'FOLLOW'
-    userId: number
+    userId: string
 }
 
 export type UnfollowActionType = {
     type: 'UNFOLLOW'
-    userId: number
+    userId: string
 }
 
 export type SetActionType = {
@@ -77,6 +77,6 @@ const usersReducer = (state: UsersPagePropsType = initialState, action: ActionsT
 
 export default usersReducer;
 
-export const followAC = (userId: number): FollowActionType => ({type: FOLLOW, userId})
-export const unfollowAC = (userId: number): UnfollowActionType => ({type: UNFOLLOW, userId})
+export const followAC = (userId: string): FollowActionType => ({type: FOLLOW, userId})
+export const unfollowAC = (userId: string): UnfollowActionType => ({type: UNFOLLOW, userId})
 export const setUsersAC = (users: Array<UsersType>): SetActionType => ({type: SET_USERS, users})
