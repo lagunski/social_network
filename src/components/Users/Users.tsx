@@ -1,69 +1,54 @@
 import React from 'react';
 import styles from './users.module.css';
 import {UsersType} from "../../Redux/users-reducer";
-import { v1 } from 'uuid';
+import {v1} from 'uuid';
+import axios from 'axios'
+
+import userPhoto from '../../assets/images/user.png'
+
+
 
 type UsersPropsType = {
     users: Array<UsersType>,
-    follow: (userId:string)=>void
-    unfollow: (userId:string)=>void
-    setUsers: (users:Array<UsersType>)=>void
+    follow: (userId: string) => void
+    unfollow: (userId: string) => void
+    setUsers: (users: Array<UsersType>) => void
 
 }
-
 
 
 const Users = (props: UsersPropsType) => {
-if (props.users.length===0) {
-    {
-        props.setUsers([
-            {
-                id: v1(),
-                photoUrl: 'https://pbs.twimg.com/media/D0V2-vFX4AAEQiN?format=jpg&name=medium',
-                followed: false,
-                fullName: 'Roman',
-                status: 'I am a boss',
-                location: {city: 'Minsk', country: 'Belarus'}
-            },
-            {
-                id: v1(),
-                photoUrl: 'https://pbs.twimg.com/media/D0V2-vFX4AAEQiN?format=jpg&name=medium',
-                followed: true,
-                fullName: 'Artur',
-                status: 'I am a boss too',
-                location: {city: 'Kiev', country: 'Ukraine'}
-            },
-            {
-                id: v1(),
-                photoUrl: 'https://pbs.twimg.com/media/D0V2-vFX4AAEQiN?format=jpg&name=medium',
-                followed: false,
-                fullName: 'Vlad',
-                status: 'I am a boss too',
-                location: {city: 'Moscow', country: 'Russia'}
-            }
-        ])
+    if (props.users.length === 0) {
+        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response =>{
+            props.setUsers(response.data.items)
+        })
+
+
     }
-}
     return <div>
         {
             props.users.map(u => <div key={u.id}>
                 <span>
-                    <div><img src={u.photoUrl} className={styles.userPhoto}/></div>
+                    <div><img src={u.photos.small != null ? u.photos.small: userPhoto} className={styles.userPhoto}/></div>
                     <div>
                         {u.followed
-                            ? <button onClick={() => {props.unfollow(u.id)}}>UnFollow</button>
-                            : <button onClick={() => {props.follow(u.id)}}>Follow</button>}
+                            ? <button onClick={() => {
+                                props.unfollow(u.id)
+                            }}>UnFollow</button>
+                            : <button onClick={() => {
+                                props.follow(u.id)
+                            }}>Follow</button>}
 
                     </div>
                 </span>
                 <span>
                     <span>
-                        <div>{u.fullName}</div>
+                        <div>{u.name}</div>
                         <div>{u.status}</div>
                     </span>
                     <span>
-                        <div>{u.location.country}</div>
-                        <div>{u.location.city}</div>
+                        <div>{"u.location.country"}</div>
+                        <div>{"u.location.city"}</div>
                     </span>
                 </span>
 
