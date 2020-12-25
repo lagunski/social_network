@@ -1,12 +1,12 @@
 import profileReducer, {addPostActionCreator, changeNewPostActionCreator} from "./profile-reducer";
 import dialogsReducer, {addNewMessageActionCreator, sendMessageActionCreator} from "./dialogs-reducer";
 import {
-    followAC,
-    setCurrentPageAC,
-    setTotalUsersCountAC,
-    setUsersAC,
-    toggleIsFetchingAC,
-    unfollowAC
+    follow,
+    setCurrentPage,
+    setTotalUsersCount,
+    setUsers,
+    toggleIsFetching,
+    unfollow
 } from "./users-reducer";
 import { v1 } from "uuid";
 
@@ -61,12 +61,12 @@ export type ActionsTypes = ReturnType <typeof addPostActionCreator> |
     ReturnType <typeof changeNewPostActionCreator> |
     ReturnType<typeof addNewMessageActionCreator> |
     ReturnType<typeof sendMessageActionCreator> |
-    ReturnType<typeof followAC> |
-    ReturnType<typeof unfollowAC> |
-    ReturnType<typeof setUsersAC> |
-    ReturnType<typeof setCurrentPageAC> |
-    ReturnType<typeof setTotalUsersCountAC> |
-    ReturnType<typeof toggleIsFetchingAC>
+    ReturnType<typeof follow> |
+    ReturnType<typeof unfollow> |
+    ReturnType<typeof setUsers> |
+    ReturnType<typeof setCurrentPage> |
+    ReturnType<typeof setTotalUsersCount> |
+    ReturnType<typeof toggleIsFetching>
 
 
 
