@@ -4,14 +4,15 @@ import userPhoto from "../../assets/images/user.png";
 import {UsersType} from "../../Redux/users-reducer";
 
 
-type UsersPropsType ={
+type UsersPropsType = {
     users: Array<UsersType>
     totalUsersCount: number
     pageSize: number
     currentPage: number
     follow: (userId: string) => void
     unfollow: (userId: string) => void
-    onPageChanged: (pageNumber: number)=>void
+    onPageChanged: (pageNumber: number) => void
+
 
 }
 
