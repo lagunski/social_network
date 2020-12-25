@@ -1,6 +1,6 @@
 import profileReducer, {addPostActionCreator, changeNewPostActionCreator} from "./profile-reducer";
 import dialogsReducer, {addNewMessageActionCreator, sendMessageActionCreator} from "./dialogs-reducer";
-import {followAC, setUsersAC, unfollowAC} from "./users-reducer";
+import {followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, unfollowAC} from "./users-reducer";
 import { v1 } from "uuid";
 
 
@@ -56,7 +56,9 @@ export type ActionsTypes = ReturnType <typeof addPostActionCreator> |
     ReturnType<typeof sendMessageActionCreator> |
     ReturnType<typeof followAC> |
     ReturnType<typeof unfollowAC> |
-    ReturnType<typeof setUsersAC>
+    ReturnType<typeof setUsersAC> |
+    ReturnType<typeof setCurrentPageAC> |
+    ReturnType<typeof setTotalUsersCountAC>
 
 
 
