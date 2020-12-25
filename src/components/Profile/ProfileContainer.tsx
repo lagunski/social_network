@@ -5,9 +5,19 @@ import {connect} from "react-redux";
 import {setUserProfile} from "../../Redux/profile-reducer";
 import {AppStateType} from "../../Redux/redux-store";
 
-type ProfileContainerPropsType = {
+export type ProfileType= {
+    aboutMe:string,
+    photos: PhotoType
+}
+
+export type PhotoType = {
+    small: string
+    large: string
+}
+
+export type ProfileContainerPropsType = {
     setUserProfile: (profile: null) => void
-    profile:any
+    profile:null|ProfileType
 }
 
 

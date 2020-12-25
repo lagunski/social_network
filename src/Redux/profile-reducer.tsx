@@ -37,7 +37,7 @@ const initialState = {
         {id: v1(), message: 'It is my first post', likeCounts: 20}
     ],
     messageForNewPost: "",
-    profile:null
+    profile: null
 }
 
 type InitialState = typeof initialState
