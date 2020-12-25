@@ -9,10 +9,8 @@ import {
     UsersType
 } from "../../Redux/users-reducer";
 import {AppStateType} from "../../Redux/redux-store";
-import {ActionsTypes} from "../../Redux/Store";
 import axios from "axios";
 import Users from "./Users";
-import preloader from '../../assets/images/preloader.gif'
 import Preloader from "../Common/Preloader/Preloader";
 
 type UsersAPIComponentPropsType = {

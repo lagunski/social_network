@@ -1,4 +1,4 @@
-import profileReducer, {addPostActionCreator, changeNewPostActionCreator} from "./profile-reducer";
+import profileReducer, {addPostActionCreator, changeNewPostActionCreator, setUserProfile} from "./profile-reducer";
 import dialogsReducer, {addNewMessageActionCreator, sendMessageActionCreator} from "./dialogs-reducer";
 import {
     follow,
@@ -66,13 +66,14 @@ export type ActionsTypes = ReturnType <typeof addPostActionCreator> |
     ReturnType<typeof setUsers> |
     ReturnType<typeof setCurrentPage> |
     ReturnType<typeof setTotalUsersCount> |
-    ReturnType<typeof toggleIsFetching>
+    ReturnType<typeof toggleIsFetching> |
+    ReturnType<typeof setUserProfile>
 
 
 
 
 
-let store: StoreType = {
+/*let store: StoreType = {
     _state: {
         profilePage: {
 
@@ -119,4 +120,4 @@ let store: StoreType = {
 }
 
 
-export default store;
+export default store;*/

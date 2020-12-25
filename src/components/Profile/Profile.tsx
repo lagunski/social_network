@@ -6,18 +6,14 @@ import {ActionsTypes, dialogsPageType, profilePageType} from "../../Redux/Store"
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import {CombinedState, Store} from "redux";
 
-export type PropsType = {
 
 
-
-}
-
-function Profile(props:PropsType) {
+function Profile(props:any) {
 
 
     return (
         <div className={s.content}>
-            <ProfileInfo/>
+            <ProfileInfo profile={props.profile}/>
             <MyPostsContainer />
 
         </div>

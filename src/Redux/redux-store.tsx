@@ -18,4 +18,7 @@ export type AppStateType = ReturnType<RootReducersType>
 export type StoreType = Store<AppStateType>
 const store: StoreType = createStore(rootReducer);
 
+declare var window: any;
+window.store=store
+
 export default store;
