@@ -5,7 +5,7 @@ import {ProfileType} from "../../../Redux/profile-reducer";
 
 
 type ProfileInfoPropsType={
-    profile: null|ProfileType
+    profile: ProfileType | null
 }
 
 

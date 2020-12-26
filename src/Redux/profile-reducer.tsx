@@ -83,7 +83,6 @@ const profileReducer = (state: InitialState = initialState, action: ActionsTypes
                 messageForNewPost: ''
             }
 
-
         case CHANGE_NEW_TEXT:
             return {
                 ...state,
@@ -97,7 +96,6 @@ const profileReducer = (state: InitialState = initialState, action: ActionsTypes
         default:
             return state
     }
-
     return state
 }
 
