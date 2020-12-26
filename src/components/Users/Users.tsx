@@ -31,7 +31,7 @@ const Users = (props: UsersPropsType) => {
             {pages.map(p => {
                 //@ts-ignore
                 return <span className={props.currentPage === p && styles.selectPage}
-                             onClick={(e) => {
+                             onClick={() => {
                                  props.onPageChanged(p)
                              }}>{p}</span>
             })}
@@ -43,7 +43,7 @@ const Users = (props: UsersPropsType) => {
 
                         <NavLink to={'/profile/' + u.id}>
                         <img src={u.photos.small != null ? u.photos.small : userPhoto}
-                             className={styles.userPhoto}/>
+                             className={styles.userPhoto} alt={''}/>
                         </NavLink>
                         </div>
 

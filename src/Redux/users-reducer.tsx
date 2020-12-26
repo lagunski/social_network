@@ -102,7 +102,6 @@ const usersReducer = (state: UsersPagePropsType = initialState, action: ActionsT
             return state
     }
 
-    return state
 }
 
 export default usersReducer;

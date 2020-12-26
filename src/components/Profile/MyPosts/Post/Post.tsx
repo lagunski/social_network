@@ -10,7 +10,7 @@ function Post(props:PropsType) {
     return (
 
         <div className={s.item}>
-            <img src={'https://pickaface.net/gallery/avatar/unr_avatarka_170523_2232_2pzbwox.png'}/>
+            <img src={'https://pickaface.net/gallery/avatar/unr_avatarka_170523_2232_2pzbwox.png'} alt={'avatarka'}/>
             {props.message}
             <div>
             <span>likes: </span> {props.likeCounts}

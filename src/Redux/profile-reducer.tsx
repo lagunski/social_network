@@ -96,7 +96,6 @@ const profileReducer = (state: InitialState = initialState, action: ActionsTypes
         default:
             return state
     }
-    return state
 }
 
 export default profileReducer;
