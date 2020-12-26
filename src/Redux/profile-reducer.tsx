@@ -1,6 +1,31 @@
 import {ActionsTypes, PostData} from "./Store";
 import { v1 } from "uuid";
 
+export type ContactType = {
+    facebook: string | null
+    website: string | null
+    vk: string | null
+    instagram: string | null
+    youtube: string | null
+    github: string | null
+    mainLink: string | null
+}
+
+export type ProfileType = {
+    aboutMe: string
+    contacts: ContactType
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName: string
+    userId: number
+    photos: PhotoType
+}
+
+export type PhotoType = {
+    small: string
+    large: string
+}
+
 export type AddPostActionType = {
     type: 'ADD_POST'
     postMessage: string

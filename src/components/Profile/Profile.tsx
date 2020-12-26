@@ -1,14 +1,12 @@
 import React from "react";
 import s from './Profile.module.css';
-import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {ActionsTypes, dialogsPageType, profilePageType} from "../../Redux/Store";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
-import {CombinedState, Store} from "redux";
-import {ProfileType} from "./ProfileContainer";
+import {ProfileType} from "../../Redux/profile-reducer";
+
 
 type ProfilePropsType={
-    profile: null|ProfileType
+    profile: null |ProfileType
 }
 
 function Profile(props:ProfilePropsType) {
