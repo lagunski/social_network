@@ -9,6 +9,7 @@ import {
     unfollow
 } from "./users-reducer";
 import { v1 } from "uuid";
+import {setAuthUserData} from "./auth-reducer";
 
 
 export type DialogItemType = {
@@ -67,7 +68,8 @@ export type ActionsTypes = ReturnType <typeof addPostActionCreator> |
     ReturnType<typeof setCurrentPage> |
     ReturnType<typeof setTotalUsersCount> |
     ReturnType<typeof toggleIsFetching> |
-    ReturnType<typeof setUserProfile>
+    ReturnType<typeof setUserProfile> |
+    ReturnType<typeof setAuthUserData>
 
 
 
