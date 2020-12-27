@@ -3,7 +3,6 @@ import styles from './users.module.css'
 import userPhoto from "../../assets/images/user.png";
 import {UsersType} from "../../Redux/users-reducer";
 import {NavLink} from "react-router-dom";
-import axios from "axios";
 import {followApi, unfollowApi} from "../../api/api";
 
 
@@ -51,7 +50,7 @@ const Users = (props: UsersPropsType) => {
                     <div>
                         {u.followed
                             ? <button onClick={() => {
-                                unfollowApi(u.id)
+                                unfollowApi.unfollow(u.id)
                                     .then(data => {
                                             if (data.resultCode === 0) {
                                                 props.unfollow(u.id)
@@ -62,7 +61,7 @@ const Users = (props: UsersPropsType) => {
 
                             }}>UnFollow</button>
                             : <button onClick={() => {
-                                followApi(u.id)
+                                followApi.follow(u.id)
                                     .then(data => {
                                         if (data.resultCode === 0) {
                                             props.follow(u.id)
