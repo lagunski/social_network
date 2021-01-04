@@ -162,14 +162,13 @@ export const getUsers = (currentPage:number, pageSize:number) => {
     }
 }
 
-/*
-export const unfollow = (id:string) => {
+export const unfollowThunk = (id:string) => {
     return (dispatch: any) => {
         dispatch(toggleIsFollowingProgress(true, id))
         unfollowApi.unfollow(id)
             .then(data => {
                     if (data.resultCode === 0) {
-                        dispatch(unfollowSuccess(id))
+                        dispatch(unfollow(id))
                     }
                     dispatch(toggleIsFollowingProgress(false, id))
                 }
@@ -177,18 +176,17 @@ export const unfollow = (id:string) => {
     }
 }
 
-export const follow = (id:string) => {
+export const followThunk = (id:string) => {
     return (dispatch: any) => {
         dispatch(toggleIsFollowingProgress(true, id))
 
         followApi.follow(id)
             .then(data => {
                 if (data.resultCode === 0) {
-                    dispatch(followSuccess(id))
+                    dispatch(follow(id))
                 }
                 dispatch(toggleIsFollowingProgress(false, id))
 
             })
     }
 }
-*/
