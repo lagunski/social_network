@@ -1,8 +1,9 @@
-import {combineReducers, createStore, Store} from "redux";
+import {applyMiddleware, combineReducers, createStore, Store} from "redux";
 import profileReducer from "./profile-reducer";
 import dialogsReducer from "./dialogs-reducer";
 import usersReducer from "./users-reducer";
 import authReducer from "./auth-reducer";
+import thunkMiddleware from "redux-thunk";
 
 
 
@@ -18,7 +19,7 @@ export type AppStateType = ReturnType<RootReducersType>
 
 
 export type StoreType = Store<AppStateType>
-const store: StoreType = createStore(rootReducer);
+const store: StoreType = createStore(rootReducer,applyMiddleware(thunkMiddleware));
 
 declare var window: any;
 window.store=store
