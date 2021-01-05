@@ -8,6 +8,8 @@ import {
 
 
 } from "../../Redux/Store";
+import {AuthPropsType} from "../../Redux/auth-reducer";
+import { Redirect } from 'react-router-dom';
 
 
 
@@ -15,6 +17,7 @@ type PropsType = {
     addNewMessage: (body: string) => void
     sendMessage: () => void
     dialogsPage: dialogsPageType
+    auth: AuthPropsType
 
 
 }
@@ -41,6 +44,8 @@ function Dialogs(props: PropsType) {
 
     }
 
+   if (!props.auth.isAuth) return <Redirect to={"/login"}/>
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItem}>
@@ -58,8 +63,6 @@ function Dialogs(props: PropsType) {
                         <button onClick={onSendMessageClick}>send</button>
                     </div>
                 </div>
-
-
             </div>
 
         </div>
