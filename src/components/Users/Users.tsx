@@ -3,7 +3,7 @@ import styles from './users.module.css'
 import userPhoto from "../../assets/images/user.png";
 import {UsersType} from "../../Redux/users-reducer";
 import {NavLink} from "react-router-dom";
-import {followApi, unfollowApi} from "../../api/api";
+
 
 
 type UsersPropsType = {

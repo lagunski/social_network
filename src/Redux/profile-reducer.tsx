@@ -1,5 +1,6 @@
 import {ActionsTypes, PostData} from "./Store";
-import { v1 } from "uuid";
+import {v1} from "uuid";
+import {profileApi} from "../api/api";
 
 export type ContactType = {
     facebook: string | null
@@ -50,10 +51,19 @@ export const setUserProfile = (profile: null): SetUserProfileActionType => {
     return ({type: SET_USER_PROFILE, profile})
 }
 
+export const getUserProfile = (userId:string) => {
+return (dispatch:(action: ActionsTypes) => void)=>{
+    profileApi.getProfile(userId)
+        .then(data => {
+            dispatch(setUserProfile(data))
+
+        })
+}
+}
+
 const ADD_POST = "ADD_POST"
 const CHANGE_NEW_TEXT = "CHANGE_NEW_TEXT"
 const SET_USER_PROFILE = "SET_USER_PROFILE"
-
 
 
 const initialState = {
