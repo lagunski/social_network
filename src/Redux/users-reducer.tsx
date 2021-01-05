@@ -177,7 +177,7 @@ export const unfollowThunk = (id: string) => {
 }
 
 export const followThunk = (id: string) => {
-    return (dispatch: any) => {
+    return (dispatch: (action: ActionsTypes) => void) => {
         dispatch(toggleIsFollowingProgress(true, id))
 
         followApi.follow(id)

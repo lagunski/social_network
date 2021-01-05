@@ -1,4 +1,5 @@
 import {ActionsTypes} from "./Store";
+import {authApi} from "../api/api";
 
 
 const SET_USER_DATA = "SET_USER_DATA"
@@ -47,6 +48,19 @@ export const setAuthUserData = (userId: number | null, login: string | null, ema
         type: SET_USER_DATA,
         data: {userId, login, email}
 
+    }
+}
+
+export const getAuthUserData = ()=>{
+    return (dispatch: (action: ActionsTypes) => void)=>{
+        authApi.getAuth()
+            .then(data => {
+                if (data.resultCode === 0) {
+                    const {id, login, email} = data.data
+                    dispatch(setAuthUserData(id, login, email));
+                }
+
+            })
     }
 }
 
