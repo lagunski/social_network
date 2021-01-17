@@ -1,4 +1,9 @@
-import profileReducer, {addPostActionCreator, changeNewPostActionCreator, setUserProfile} from "./profile-reducer";
+import profileReducer, {
+    addPostActionCreator,
+    changeNewPostActionCreator,
+    setStatus,
+    setUserProfile
+} from "./profile-reducer";
 import dialogsReducer, {addNewMessageActionCreator, sendMessageActionCreator} from "./dialogs-reducer";
 import {
     follow,
@@ -70,7 +75,8 @@ export type ActionsTypes = ReturnType <typeof addPostActionCreator> |
     ReturnType<typeof toggleIsFetching> |
     ReturnType<typeof setUserProfile> |
     ReturnType<typeof setAuthUserData> |
-    ReturnType<typeof toggleIsFollowingProgress>
+    ReturnType<typeof toggleIsFollowingProgress> |
+    ReturnType<typeof setStatus>
 
 
 

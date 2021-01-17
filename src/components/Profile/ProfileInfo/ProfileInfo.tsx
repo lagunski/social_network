@@ -8,6 +8,8 @@ import ProfileStatus from "./ProfileStatus";
 
 type ProfileInfoPropsType={
     profile: ProfileType | null
+    status: string
+    updateUserStatus: (status: string) => void
 }
 
 
@@ -27,7 +29,7 @@ function ProfileInfo(props:ProfileInfoPropsType) {
                     <div>{props.profile.fullName}</div>
                     <div>{props.profile.contacts.facebook}</div>
                     <div>{props.profile.contacts.vk}</div>
-                    <ProfileStatus status={'fhsfbsh'}/>
+                    <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus}/>
                 </div>
             </div>
         </div>

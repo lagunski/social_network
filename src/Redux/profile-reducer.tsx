@@ -40,6 +40,12 @@ export type SetUserProfileActionType = {
     profile: null
 }
 
+export type SetStatusActionType = {
+    type: 'SET_STATUS'
+    status: string
+}
+
+
 export const addPostActionCreator = (postMessage: string): AddPostActionType => {
     return ({type: ADD_POST, postMessage: postMessage})
 }
@@ -51,19 +57,48 @@ export const setUserProfile = (profile: null): SetUserProfileActionType => {
     return ({type: SET_USER_PROFILE, profile})
 }
 
-export const getUserProfile = (userId:string) => {
-return (dispatch:(action: ActionsTypes) => void)=>{
-    profileApi.getProfile(userId)
-        .then(data => {
-            dispatch(setUserProfile(data))
-
-        })
+export const setStatus = (status: string): SetStatusActionType => {
+    return ({type: SET_STATUS, status})
 }
+
+
+
+
+export const getUserProfile = (userId: string) => {
+    return (dispatch: (action: ActionsTypes) => void) => {
+        profileApi.getProfile(userId)
+            .then(data => {
+                dispatch(setUserProfile(data))
+
+            })
+    }
+}
+export const getUserStatus = (userId: string) => {
+    return (dispatch: (action: ActionsTypes) => void) => {
+        profileApi.getStatus(userId)
+            .then(data => {
+                dispatch(setStatus(data))
+
+            })
+    }
+}
+
+export const updateUserStatus = (status: string) => {
+    return (dispatch: (action: ActionsTypes) => void) => {
+        profileApi.updateStatus(status)
+            .then(data => {
+                if(data.resultCode === 0) {
+                    dispatch(setStatus(status))
+                }
+
+            })
+    }
 }
 
 const ADD_POST = "ADD_POST"
 const CHANGE_NEW_TEXT = "CHANGE_NEW_TEXT"
 const SET_USER_PROFILE = "SET_USER_PROFILE"
+const SET_STATUS = "SET_STATUS"
 
 
 const initialState = {
@@ -72,7 +107,8 @@ const initialState = {
         {id: v1(), message: 'It is my first post', likeCounts: 20}
     ],
     messageForNewPost: "",
-    profile: null
+    profile: null,
+    status: ""
 }
 
 type InitialState = typeof initialState
@@ -102,6 +138,11 @@ const profileReducer = (state: InitialState = initialState, action: ActionsTypes
             return {
                 ...state,
                 profile: action.profile
+            }
+        case SET_STATUS:
+            return {
+                ...state,
+                status: action.status
             }
         default:
             return state
