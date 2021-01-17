@@ -1,20 +1,24 @@
 import profileReducer, {
-    addPostActionCreator,
-    changeNewPostActionCreator,
-    setStatus,
-    setUserProfile
+    addPostActionCreator, AddPostActionType,
+    changeNewPostActionCreator, ChangeNewPostActionType,
+    setStatus, SetStatusActionType,
+    setUserProfile, SetUserProfileActionType
 } from "./profile-reducer";
-import dialogsReducer, {addNewMessageActionCreator, sendMessageActionCreator} from "./dialogs-reducer";
+import dialogsReducer, {
+    addNewMessageActionCreator,
+    addNewMessageActionType,
+    sendMessageActionCreator, sendMessageActionType
+} from "./dialogs-reducer";
 import {
-    follow,
-    setCurrentPage,
-    setTotalUsersCount,
-    setUsers,
-    toggleIsFetching, toggleIsFollowingProgress,
-    unfollow
+    follow, FollowActionType,
+    setCurrentPage, SetCurrentPageActionType,
+    setTotalUsersCount, SetTotalUsersCountActionType,
+    setUsers, SetUsersActionType,
+    toggleIsFetching, ToggleIsFetchingActionType, toggleIsFollowingProgress, ToggleIsFollowingProgressActionType,
+    unfollow, UnfollowActionType
 } from "./users-reducer";
 import { v1 } from "uuid";
-import {setAuthUserData} from "./auth-reducer";
+import {setAuthUserData, SetAuthUserDataActionType} from "./auth-reducer";
 
 
 export type DialogItemType = {
@@ -63,20 +67,20 @@ export type StoreType = {
 }
 
 
-export type ActionsTypes = ReturnType <typeof addPostActionCreator> |
-    ReturnType <typeof changeNewPostActionCreator> |
-    ReturnType<typeof addNewMessageActionCreator> |
-    ReturnType<typeof sendMessageActionCreator> |
-    ReturnType<typeof follow> |
-    ReturnType<typeof unfollow> |
-    ReturnType<typeof setUsers> |
-    ReturnType<typeof setCurrentPage> |
-    ReturnType<typeof setTotalUsersCount> |
-    ReturnType<typeof toggleIsFetching> |
-    ReturnType<typeof setUserProfile> |
-    ReturnType<typeof setAuthUserData> |
-    ReturnType<typeof toggleIsFollowingProgress> |
-    ReturnType<typeof setStatus>
+export type ActionsTypes = AddPostActionType |
+    ChangeNewPostActionType |
+    addNewMessageActionType |
+    sendMessageActionType |
+    FollowActionType |
+    UnfollowActionType |
+    SetUsersActionType |
+    SetCurrentPageActionType |
+    SetTotalUsersCountActionType |
+    ToggleIsFetchingActionType |
+    SetUserProfileActionType |
+    SetAuthUserDataActionType |
+    ToggleIsFollowingProgressActionType |
+    SetStatusActionType
 
 
 

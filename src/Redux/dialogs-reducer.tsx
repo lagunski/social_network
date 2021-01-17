@@ -8,6 +8,9 @@ export const addNewMessageActionCreator = (body: string) => {
     } as const
 }
 
+export type addNewMessageActionType = ReturnType<typeof addNewMessageActionCreator>
+export type sendMessageActionType = ReturnType<typeof sendMessageActionCreator>
+
 
 export const sendMessageActionCreator = () => {
     return {
